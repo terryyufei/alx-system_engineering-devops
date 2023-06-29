@@ -1,7 +1,7 @@
 0x04. Loops, conditions and parsing
 ===================================
 
--   By Dev Nderitu
+-   By Terry Wambui
 -   Weight: 1
 
 
@@ -842,4 +842,3 @@ sylvain@ubuntu$
 
 - GitHub repository: alx-system_engineering-devops
 - Directory: 0x04-loops_conditions_and_parsing
-- File: 103-dig_the-data
