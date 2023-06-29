@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This script displays numbers from 1 to 100
+# Displays "FizzBuzz" when the number is a mutiple of 3 and 5
+# Displays "Fizz" when number is a mutiple of 3
+# Displays "Buzz" when the number is a mutiple of 5
+# Otherwise, display the numbers. Use a list format
+
+for number in {1..100}
+do
+	if (( number % 3 == 0 && number % 5 == 0 ))
+	then
+		echo "FizzBuzz"
+	elif (( number % 3 == 0 ))
+	then
+		echo "Fizz"
+	elif (( number % 5 == 0 ))
+	then
+		echo "Buzz"
+	else
+		echo "$number"
+	fi
+done
