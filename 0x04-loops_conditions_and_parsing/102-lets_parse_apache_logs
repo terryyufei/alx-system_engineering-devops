@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Displays the visitor IP along with the HTTP status code
+# Must use awk
+# Not allowed to use while, for, until and cut
+
+awk -F' ' ' {print $1, $9}' apache-access.log
