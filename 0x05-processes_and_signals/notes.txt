@@ -3,3 +3,16 @@ In this script, the while loop runs indefinitely because the condition true is a
 Within the loop, it echoes the message "To infinity and beyond" 
 and then pauses execution for 2 seconds using the sleep command. 
 The loop continues to repeat this process indefinitely until it is interrupted.
+
+5-dont_stop_me_now
+-kill "$(pgrep -f 4-to_infinity_and_beyond)": executes a command to kill the process with the name "4-to_infinity_and_beyond"
+-The pgrep command is used to search for processes based on their names or attributes.
+-The -f option allows for a full pattern match. 
+So, in this case, it searches for a process with the name "4-to_infinity_and_beyond". 
+The output of this command is the PID (Process ID) of the matching process.
+-The $(...) syntax is used to capture the output of a command and substitute it into the overall command. 
+In this case, it captures the PID of the process found by pgrep.
+-The kill command is used to send a signal to a process, requesting it to terminate. 
+In this script, the captured PID is passed as an argument to the kill command, indicating that the process with that PID should be terminated.
+-Therefore, the script's purpose is to find the process with the name "4-to_infinity_and_beyond" using pgrep, capture its PID, 
+and then use the kill command to terminate that process.
