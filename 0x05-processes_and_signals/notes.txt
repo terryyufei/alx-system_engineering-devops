@@ -16,3 +16,18 @@ In this case, it captures the PID of the process found by pgrep.
 In this script, the captured PID is passed as an argument to the kill command, indicating that the process with that PID should be terminated.
 -Therefore, the script's purpose is to find the process with the name "4-to_infinity_and_beyond" using pgrep, capture its PID, 
 and then use the kill command to terminate that process.
+
+6-stop_me_if_you_can
+-pkill: This command is used to send signals to processes based on their names or other attributes.
+- -f: It is an option used with pkill to perform a full pattern match. 
+It allows the process name to be matched against the entire command line associated with the process.
+-4-to_infinity_and_beyond: This is the pattern or name of the process that pkill will search for and terminate.
+
+-When you run this script, the pkill command will search for any processes whose command line matches 
+the pattern "4-to_infinity_and_beyond" and terminate them by sending a signal. 
+The signal sent by default is SIGTERM, which requests a graceful termination. 
+If the process does not respond to SIGTERM, pkill can send a stronger signal 
+like SIGKILL using the -9 option for forceful termination.
+
+-It's important to note that this script may terminate multiple processes if there are multiple processes 
+running with the same command line matching the pattern "4-to_infinity_and_beyond".
