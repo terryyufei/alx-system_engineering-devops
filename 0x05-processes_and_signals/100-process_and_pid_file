@@ -7,13 +7,14 @@
 # receiving a SIGQUIT or SIGTERM signal
 
 file=/var/run/myscript.pid
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm $file; exit' SIGQUIT
-trap 'echo I hate the kill command; rm $file; exit' SIGTERM
 echo $$ > "$file"
 
 while true
 do
 	echo "To infinity and beyond"
 	sleep 2
+
+	trap 'echo "Y U no love me?!"' SIGINT
+	trap 'rm $file; exit' SIGQUIT
+	trap 'echo I hate the kill command; rm $file; exit' SIGTERM
 done
