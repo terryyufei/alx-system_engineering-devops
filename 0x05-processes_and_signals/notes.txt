@@ -1,0 +1,5 @@
+4. To infinity and beyond
+In this script, the while loop runs indefinitely because the condition true is always true. 
+Within the loop, it echoes the message "To infinity and beyond" 
+and then pauses execution for 2 seconds using the sleep command. 
+The loop continues to repeat this process indefinitely until it is interrupted.
