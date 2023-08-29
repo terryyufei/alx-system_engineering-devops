@@ -3,6 +3,6 @@
 
 sudo apt update
 sudo apt install -y nginx
-echo "Hello World" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sudo sed -i "53s/.*/location \/redirect_me {\n\treturn 301 http:\/\/github.com\/\;\n}/" /etc/nginx/sites-available/default
 sudo service nginx restart
