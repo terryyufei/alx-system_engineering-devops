@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# a script that configures a server to be running, and listening on port 80 
+# nginx server configuration to listen on port 80
 
-sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
-sudo service nginx restart
+# remove default nginx file config
+rm /etc/nginx/sites-enabled/default
+# nginx config  to listen on port 80 for ll IPV4 Ips
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# nginx start
+service nginx restart
