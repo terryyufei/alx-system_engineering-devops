@@ -34,13 +34,13 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 frontend haproxy_balancer
     bind *:80
-    bind *:443 ssl crt /etc/ssl/certs/ssl.pem
+    bind *:443 ssl crt /etc/ssl/www.sophiaterry.tech/sslsophiaterry.tech.pem
     redirect scheme https code 301 if !{ ssl_fc }
     mode http
     default_backend webservers
 
 backend webservers
     balance roundrobin
-	server 234523-web-01 18.234.105.167:80 check
-    server 234523-web-02 100.25.222.179:80 check
-  
+    server 234523-web-01 18.234.105.167 check
+    server 234523-web-02 100.25.222.179 check
+
