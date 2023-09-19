@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
-# Step 1: Stop the Apache web server if it's running
-pkill apache2
+# Replace the "user www-data" line with "user nginx" in the nginx configuration file.
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
 
-# Step 2: Change ownership of the Nginx configuration file
-chown nginx /etc/nginx/nginx.conf
-
-# Step 3: Modify permissions to allow the Nginx user to read the configuration file
-chmod u+r /etc/nginx/nginx.conf
-
-# Step 4: Update the Nginx default site configuration to use port 8080 instead of 80
+# Replace port 80 with port 8080 in the default site configuration.
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 
-# Step 5: Restart the Nginx service with the changes
-sudo -u nginx service nginx restart
+# Change the permissions of the nginx.conf file to 644 (readable by owner and group).
+chmod 644 /etc/nginx/nginx.conf
+
+# Stop the Apache2 web server (if it's running).
+pkill apache2
+
+# Start the nginx service with the nginx user.
+sudo -u nginx service nginx start
+
