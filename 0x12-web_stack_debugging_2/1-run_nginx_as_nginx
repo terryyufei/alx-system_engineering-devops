@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
-
-# Replace the "user www-data" line with "user nginx" in the nginx configuration file.
+#Make Nginx running as the nginx user.
 sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
-
-# Replace port 80 with port 8080 in the default site configuration.
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
-
-# Change the permissions of the nginx.conf file to 644 (readable by owner and group).
 chmod 644 /etc/nginx/nginx.conf
-
-# Stop the Apache2 web server (if it's running).
 pkill apache2
-
-# Start the nginx service with the nginx user.
 sudo -u nginx service nginx start
-
