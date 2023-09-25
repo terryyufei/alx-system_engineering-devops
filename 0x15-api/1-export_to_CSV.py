@@ -24,8 +24,6 @@ if __name__ == "__main__":
     # open a CSV file for writing
     with open("{}.csv".format(user_id), "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-
-        # Iterate through the TODO list items
         [writer.writerow(
             [user_id, username, t.get("completed"), t.get("title")]
         ) for t in todos]
