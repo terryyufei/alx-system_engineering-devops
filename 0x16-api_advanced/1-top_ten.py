@@ -6,7 +6,8 @@ import requests
 
 def top_ten(subreddit):
     """Query Reddit and print titles of the first 10 hot posts"""
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
+
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
 
     # Set a custom User-Agent to avoid too many requests error
     headers = {'User-Agent': 'My user Agent 1.0'}
@@ -23,5 +24,5 @@ def top_ten(subreddit):
         for i, post in enumerate(post_data[:10], start=1):
             post_title = post['data']['title']
             print(f"{i}. {post_title}")
-        else:
-            print("None")
+    else:
+        print(None)
