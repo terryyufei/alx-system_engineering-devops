@@ -16,7 +16,7 @@ def top_ten(subreddit):
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     # Chek if the request was successful and not redirect
-    if response.status_code == 200 and not response.is_redirect:
+    if response.status_code == 200 and:
         # Parse the JSON response and extract post titles
         post_data = response.json().get('data', {}).get('children', [])
 
