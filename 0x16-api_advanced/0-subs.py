@@ -8,7 +8,7 @@ def number_of_subscribers(subreddit):
     """query a subreddit and retrive no of subscribers"""
 
     # Reddit API endpoint for getting subreddit informatiom
-    url = 'http://www.reddit.com/r/{}/about.json'.format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
     # Set a custom User-Agent to avoid too many requests error
     headers = {'User-Agent': 'My user Agent 1.0'}
@@ -17,9 +17,10 @@ def number_of_subscribers(subreddit):
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     # Chek if the request was successful and not redirect
-    if response.status_code == 200 and not response.is_redirect:
+    if response.status_code == 200:
         # parse JSON response to extract no of subscribers
-        data = response.json()
-        return data.get('data').get('subscribers')
+        data = response.json().get('data', {})
+        sub_count = data.get('subscribers', 0)
+        return sub_count
     else:
         return 0
