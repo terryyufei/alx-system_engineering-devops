@@ -21,8 +21,8 @@ def top_ten(subreddit):
         post_data = response.json().get('data', {}).get('children', [])
 
         # Print the titles of the first 10 hot posts
-        for i, post in enumerate(post_data[:10], start=1):
+        for post in post_data[:10]:
             post_title = post['data']['title']
-            print(f"{i}. {post_title}")
+            print(post_title)
     else:
         print(None)
