@@ -15,14 +15,14 @@ def top_ten(subreddit):
     # send a GET request to the Reddit API
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    # Chek if the request was successful and not redirect
-    if response.status_code == 200:
-        # Parse the JSON response and extract post titles
-        post_data = response.json().get('data', {}).get('children', [])
-
-        # Print the titles of the first 10 hot posts
-        for post in post_data[:10]:
-            post_title = post['data']['title']
-            print(post_title)
-    else:
-        print(None)
+    try:
+        response = requests.get(url, headers=headers,
+                                allow_redirects=False)
+        if response.status_code == 200:
+            children = response.json().get('data').get('children')
+            for i in range(10):
+                print(children[i].get('data').get('title'))
+        else:
+            print("None")
+    except Exception:
+        print("None")
