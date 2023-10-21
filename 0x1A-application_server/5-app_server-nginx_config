@@ -1,0 +1,39 @@
+server {
+    listen 80;
+    server_name 18.234.105.167;
+    add_header X-Served-By $HOSTNAME;
+
+
+    location /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # serve API on Airbnb_clone_v3
+    location /api {
+                proxy_pass http://127.0.0.1:5002/api;
+
+    location /static {
+        alias /home/ubuntu/AirBnB_clone_v2/web_static;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+}
+    location / {
+                proxy_pass http://127.0.0.1:5003/2-hbnb;
+        }
+
+}
+
